@@ -5,29 +5,12 @@
 check_is_root
 
 # Prerequisites
-apt-get update
+mount none -t proc /proc
 
-apt-get install -y \
-    binutils \
-    debootstrap \
-    squashfs-tools \
-    xorriso \
-    grub-pc-bin \
-    grub-efi-amd64-bin \
-    mtools
+mount none -t sysfs /sys
 
-mkdir $HOME/live-ubuntu-from-scratch
+mount none -t devpts /dev/pts
 
-# Bootstrap and configure ubuntu
-debootstrap \
-   --arch=amd64 \
-   --variant=minbase \
-   bionic \
-   $HOME/live-ubuntu-from-scratch/chroot \
-   http://us.archive.ubuntu.com/ubuntu/
+export HOME=/root
 
-mount --bind /dev $HOME/live-ubuntu-from-scratch/chroot/dev
-
-mount --bind /run $HOME/live-ubuntu-from-scratch/chroot/run
-
-chroot $HOME/live-ubuntu-from-scratch/chroot
+export LC_ALL=C

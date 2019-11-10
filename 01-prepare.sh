@@ -23,9 +23,9 @@ debootstrap \
    bionic \
    $HOME/live-ubuntu-from-scratch/chroot \
    http://us.archive.ubuntu.com/ubuntu/
-
 mount --bind /dev $HOME/live-ubuntu-from-scratch/chroot/dev
-
 mount --bind /run $HOME/live-ubuntu-from-scratch/chroot/run
+
+cp *.sh $HOME/live-ubuntu-from-scratch/chroot/
 
 chroot $HOME/live-ubuntu-from-scratch/chroot
