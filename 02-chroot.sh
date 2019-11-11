@@ -74,9 +74,9 @@ apt-get install -y \
     less
 
 # My Apps
-# ./vscode.sh
-./googlechrome.sh
-./jdk8.sh
+./z_vscode.sh
+./z_googlechrome.sh
+./z_jdk8.sh
 
 # Remove unused packages
 apt-get autoremove -y
