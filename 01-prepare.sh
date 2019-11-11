@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . constants.sh
-
 check_is_root
 
 # Prerequisites
@@ -15,18 +14,18 @@ apt-get install -y \
     grub-efi-amd64-bin \
     mtools
 
-mkdir $HOME/live-ubuntu-from-scratch
+mkdir $LIVECD_HOME_DIR
 
 # Bootstrap and configure ubuntu
 debootstrap \
    --arch=amd64 \
    --variant=minbase \
    bionic \
-   $HOME/live-ubuntu-from-scratch/chroot \
+   $LIVECD_HOME_DIR/chroot \
    http://us.archive.ubuntu.com/ubuntu/
-mount --bind /dev $HOME/live-ubuntu-from-scratch/chroot/dev
-mount --bind /run $HOME/live-ubuntu-from-scratch/chroot/run
+mount --bind /dev $LIVECD_HOME_DIR/chroot/dev
+mount --bind /run $LIVECD_HOME_DIR/chroot/run
 
-cp *.sh $HOME/live-ubuntu-from-scratch/chroot/
+cp *.sh $LIVECD_HOME_DIR/chroot/
 
-chroot $HOME/live-ubuntu-from-scratch/chroot
+chroot $LIVECD_HOME_DIR/chroot

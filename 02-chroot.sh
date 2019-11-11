@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . constants.sh
-
 check_is_root
 
 # Configure mount points, home and locale
@@ -12,7 +11,7 @@ export HOME=/root
 export LC_ALL=C
 
 # Set a custom hostname
-echo "ubuntu-fs-live" > /etc/hostname
+echo "ubuntu-fs-live-${TIMESTAMP}" > /etc/hostname
 
 # Configure apt sources.list
 cat <<EOF > /etc/apt/sources.list
