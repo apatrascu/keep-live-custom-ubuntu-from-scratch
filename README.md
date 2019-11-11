@@ -2,6 +2,17 @@
 
 This procedure shows how to create a **bootable** and **installable** Ubuntu Live (along with the automatic hardware detection and configuration) from scratch.
 
+## Quick steps
+
+Login as root, clone the repository, go inside the cloned dir and run: `./01-prepare.sh`. 
+
+At the end of it, you will be dropped inside the chroot environment. Run `./02-chroot.sh`. At the end if it, write `exit` and press `ENTER`.
+
+Finnaly, run `03-iso.sh` to finalize the setup and create the ISO.
+
+If you want extra apps installed, add a `z_XXXX.sh` script.
+
+
 ## Prerequisites (GNU/Linux Debian/Ubuntu)
 
 Install applications we need to build the environment.
