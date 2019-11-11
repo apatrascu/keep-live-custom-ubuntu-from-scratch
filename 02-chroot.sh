@@ -107,4 +107,5 @@ umount /dev/pts
 export HISTSIZE=0
 
 # Exit the chroot environment
-exit
+echo ""
+echo "Done with chroot. Type 'exit' and continue with next step"

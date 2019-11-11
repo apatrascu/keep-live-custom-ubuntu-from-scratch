@@ -137,4 +137,4 @@ xorriso \
 
 # Done
 echo ""
-echo "Done. Use ubuntu-from-scratch.iso"
+echo "Done. Use ../live-ubuntu-from-scratch/ubuntu-from-scratch.iso"
