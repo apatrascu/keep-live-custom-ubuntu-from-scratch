@@ -5,6 +5,7 @@
 check_is_root
 
 # Prerequisites
+apt-get update
 apt-get install -y \
     binutils \
     debootstrap \
