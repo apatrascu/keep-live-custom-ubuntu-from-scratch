@@ -79,6 +79,7 @@ apt-get install -y \
 ./z_jdk8.sh
 ./z_remmina.sh
 ./z_utils.sh
+./z_gnomesettings.sh
 
 # My cleanup
 ./z_cleanup.sh
