@@ -30,18 +30,18 @@ insmod all_video
 set default="0"
 set timeout=30
 
-menuentry "Try Ubuntu FS $TIMESTAMP without installing" {
-   linux /casper/vmlinuz boot=casper quiet splash ---
+menuentry "Try UFS $TIMESTAMP without installing" {
+   linux /casper/vmlinuz boot=casper quiet splash noapic ---
    initrd /casper/initrd
 }
 
-menuentry "Install Ubuntu FS $TIMESTAMP" {
-   linux /casper/vmlinuz boot=casper only-ubiquity quiet splash ---
+menuentry "Install UFS $TIMESTAMP" {
+   linux /casper/vmlinuz boot=casper only-ubiquity quiet splash noapic ---
    initrd /casper/initrd
 }
 
 menuentry "Check disc for defects" {
-   linux /casper/vmlinuz boot=casper integrity-check quiet splash ---
+   linux /casper/vmlinuz boot=casper integrity-check quiet splash noapic ---
    initrd /casper/initrd
 }
 
@@ -116,7 +116,7 @@ xorriso \
    -as mkisofs \
    -iso-level 3 \
    -full-iso9660-filenames \
-   -volid "Ubuntu from scratch $TIMESTAMP" \
+   -volid "UFS $TIMESTAMP" \
    -eltorito-boot boot/grub/bios.img \
    -no-emul-boot \
    -boot-load-size 4 \

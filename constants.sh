@@ -10,6 +10,6 @@ function check_is_root () {
 
 
 TIMESTAMP=$(date '+%Y%m%d.%H%M')
-ISO_NAME="ubuntu-from-scratch-${TIMESTAMP}.iso"
+ISO_NAME="ufs-${TIMESTAMP}.iso"
 LIVECD_DIR_NAME=live-ubuntu-from-scratch
 LIVECD_HOME_DIR=$HOME/$LIVECD_DIR_NAME
