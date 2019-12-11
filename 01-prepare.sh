@@ -28,4 +28,7 @@ mount --bind /run $LIVECD_HOME_DIR/chroot/run
 
 cp *.sh $LIVECD_HOME_DIR/chroot/
 
+echo ""
+echo "Entering CHROOT. Continue with running the next script"
+
 chroot $LIVECD_HOME_DIR/chroot
