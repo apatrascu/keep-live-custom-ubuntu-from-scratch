@@ -77,6 +77,10 @@ apt-get install -y \
 # ./z_googlechrome.sh
 ./z_bravebrowser.sh
 ./z_jdk8.sh
+./z_utils.sh
+
+# My cleanup
+./z_cleanup.sh
 
 # Remove unused packages
 apt-get autoremove -y
