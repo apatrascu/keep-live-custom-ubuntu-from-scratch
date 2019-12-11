@@ -75,7 +75,8 @@ apt-get install -y \
 
 # My Apps
 ./z_vscode.sh
-./z_googlechrome.sh
+# ./z_googlechrome.sh
+./z_bravebrowser.sh
 ./z_jdk8.sh
 
 # Remove unused packages
