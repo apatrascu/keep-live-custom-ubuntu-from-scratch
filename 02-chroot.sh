@@ -11,7 +11,7 @@ export HOME=/root
 export LC_ALL=C
 
 # Set a custom hostname
-echo "ubuntu-fs-live-${TIMESTAMP}" > /etc/hostname
+echo "ufs" > /etc/hostname
 
 # Configure apt sources.list
 cat <<EOF > /etc/apt/sources.list
@@ -77,6 +77,8 @@ apt-get install -y \
 # ./z_googlechrome.sh
 ./z_bravebrowser.sh
 ./z_jdk8.sh
+./z_pinta.sh
+./z_remmina.sh
 ./z_utils.sh
 
 # My cleanup
