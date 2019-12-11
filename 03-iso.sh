@@ -2,6 +2,7 @@
 
 . constants.sh
 check_is_root
+EXTRA_BOOT_FLAGS="noapic"
 
 # Unbind mount points
 umount $LIVECD_HOME_DIR/chroot/dev
@@ -31,17 +32,17 @@ set default="0"
 set timeout=30
 
 menuentry "Try UFS $TIMESTAMP without installing" {
-   linux /casper/vmlinuz boot=casper quiet splash noapic ---
+   linux /casper/vmlinuz boot=casper quiet splash $EXTRA_BOOT_FLAGS ---
    initrd /casper/initrd
 }
 
 menuentry "Install UFS $TIMESTAMP" {
-   linux /casper/vmlinuz boot=casper only-ubiquity quiet splash noapic ---
+   linux /casper/vmlinuz boot=casper only-ubiquity quiet splash $EXTRA_BOOT_FLAGS ---
    initrd /casper/initrd
 }
 
 menuentry "Check disc for defects" {
-   linux /casper/vmlinuz boot=casper integrity-check quiet splash noapic ---
+   linux /casper/vmlinuz boot=casper integrity-check quiet splash $EXTRA_BOOT_FLAGS ---
    initrd /casper/initrd
 }
 

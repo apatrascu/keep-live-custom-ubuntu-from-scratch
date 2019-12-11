@@ -12,6 +12,7 @@ export LC_ALL=C
 
 # Set a custom hostname
 echo "ufs" > /etc/hostname
+echo "ufs" > /etc/mybuild
 
 # Configure apt sources.list
 cat <<EOF > /etc/apt/sources.list
