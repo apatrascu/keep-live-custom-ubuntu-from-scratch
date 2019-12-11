@@ -77,7 +77,6 @@ apt-get install -y \
 # ./z_googlechrome.sh
 ./z_bravebrowser.sh
 ./z_jdk8.sh
-./z_pinta.sh
 ./z_remmina.sh
 ./z_utils.sh
 

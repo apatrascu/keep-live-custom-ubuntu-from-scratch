@@ -76,7 +76,7 @@ printf $(sudo du -sx --block-size=1 chroot | cut -f1) > image/casper/filesystem.
 # Create diskdefines
 cd $LIVECD_HOME_DIR
 cat <<EOF > image/README.diskdefines
-#define DISKNAME  Ubuntu from scratch $TIMESTAMP
+#define DISKNAME  UFS-$TIMESTAMP
 #define TYPE  binary
 #define TYPEbinary  1
 #define ARCH  amd64
@@ -116,7 +116,7 @@ xorriso \
    -as mkisofs \
    -iso-level 3 \
    -full-iso9660-filenames \
-   -volid "UFS $TIMESTAMP" \
+   -volid "UFS-$TIMESTAMP" \
    -eltorito-boot boot/grub/bios.img \
    -no-emul-boot \
    -boot-load-size 4 \
