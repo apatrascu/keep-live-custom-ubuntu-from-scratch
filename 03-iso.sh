@@ -1,15 +1,14 @@
 #!/bin/bash
 
 . constants.sh
-
 check_is_root
 
 # Unbind mount points
-umount $HOME/live-ubuntu-from-scratch/chroot/dev
-umount $HOME/live-ubuntu-from-scratch/chroot/run
+umount $LIVECD_HOME_DIR/chroot/dev
+umount $LIVECD_HOME_DIR/chroot/run
 
 # Create the CD image directory and populate it
-cd $HOME/live-ubuntu-from-scratch
+cd $LIVECD_HOME_DIR
 mkdir -p image/{casper,isolinux,install}
 cp chroot/boot/vmlinuz-**-**-generic image/casper/vmlinuz
 cp chroot/boot/initrd.img-**-**-generic image/casper/initrd
@@ -20,7 +19,7 @@ unzip -p image/install/memtest86-usb.zip memtest86-usb.img > image/install/memte
 rm image/install/memtest86-usb.zip
 
 # Grub configuration
-cd $HOME/live-ubuntu-from-scratch
+cd $LIVECD_HOME_DIR
 touch image/ubuntu
 cat <<EOF > image/isolinux/grub.cfg
 
@@ -31,12 +30,12 @@ insmod all_video
 set default="0"
 set timeout=30
 
-menuentry "Try Ubuntu FS without installing" {
+menuentry "Try Ubuntu FS $TIMESTAMP without installing" {
    linux /casper/vmlinuz boot=casper quiet splash ---
    initrd /casper/initrd
 }
 
-menuentry "Install Ubuntu FS" {
+menuentry "Install Ubuntu FS $TIMESTAMP" {
    linux /casper/vmlinuz boot=casper only-ubiquity quiet splash ---
    initrd /casper/initrd
 }
@@ -60,7 +59,7 @@ menuentry "Test memory Memtest86 (UEFI, long load time)" {
 EOF
 
 # Create manifest
-cd $HOME/live-ubuntu-from-scratch
+cd $LIVECD_HOME_DIR
 chroot chroot dpkg-query -W --showformat='${Package} ${Version}\n' | tee image/casper/filesystem.manifest
 cp -v image/casper/filesystem.manifest image/casper/filesystem.manifest-desktop
 sed -i '/ubiquity/d' image/casper/filesystem.manifest-desktop
@@ -70,14 +69,14 @@ sed -i '/laptop-detect/d' image/casper/filesystem.manifest-desktop
 sed -i '/os-prober/d' image/casper/filesystem.manifest-desktop
 
 # Compress the chroot
-cd $HOME/live-ubuntu-from-scratch
+cd $LIVECD_HOME_DIR
 mksquashfs chroot image/casper/filesystem.squashfs
 printf $(sudo du -sx --block-size=1 chroot | cut -f1) > image/casper/filesystem.size
 
 # Create diskdefines
-cd $HOME/live-ubuntu-from-scratch
+cd $LIVECD_HOME_DIR
 cat <<EOF > image/README.diskdefines
-#define DISKNAME  Ubuntu from scratch
+#define DISKNAME  Ubuntu from scratch $TIMESTAMP
 #define TYPE  binary
 #define TYPEbinary  1
 #define ARCH  amd64
@@ -89,7 +88,7 @@ cat <<EOF > image/README.diskdefines
 EOF
 
 # Create ISO Image for a LiveCD (BIOS + UEFI)
-cd $HOME/live-ubuntu-from-scratch/image
+cd $LIVECD_HOME_DIR/image
 grub-mkstandalone \
    --format=x86_64-efi \
    --output=isolinux/bootx64.efi \
@@ -117,7 +116,7 @@ xorriso \
    -as mkisofs \
    -iso-level 3 \
    -full-iso9660-filenames \
-   -volid "Ubuntu from scratch" \
+   -volid "Ubuntu from scratch $TIMESTAMP" \
    -eltorito-boot boot/grub/bios.img \
    -no-emul-boot \
    -boot-load-size 4 \
@@ -129,7 +128,7 @@ xorriso \
    -e EFI/efiboot.img \
    -no-emul-boot \
    -append_partition 2 0xef isolinux/efiboot.img \
-   -output "../ubuntu-from-scratch.iso" \
+   -output "../$ISO_NAME" \
    -graft-points \
       "." \
       /boot/grub/bios.img=isolinux/bios.img \
@@ -137,4 +136,4 @@ xorriso \
 
 # Done
 echo ""
-echo "Done. Use ../live-ubuntu-from-scratch/ubuntu-from-scratch.iso"
+echo "Done. Use ../$LIVECD_DIR_NAME/$ISO_NAME"
