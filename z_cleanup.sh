@@ -14,4 +14,5 @@ apt-get remove --purge -y \
     gnome-calendar \
     transmission-gtk \
     totem \
-    simple-scan
+    simple-scan \
+    yelp
