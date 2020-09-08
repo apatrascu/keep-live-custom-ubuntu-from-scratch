@@ -73,6 +73,9 @@ apt-get install -y \
     nano \
     less
 
+# upgrade everything
+apt-get full-upgrade -y
+
 # My Apps
 ./z_vscode.sh
 # ./z_googlechrome.sh
@@ -84,9 +87,6 @@ apt-get install -y \
 
 # My cleanup
 ./z_cleanup.sh
-
-# upgrade everything
-apt-get full-upgrade -y
 
 # Remove unused packages
 apt-get autoremove -y
