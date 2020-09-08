@@ -73,9 +73,6 @@ apt-get install -y \
     nano \
     less
 
-# upgrade everything
-apt-get full-upgrade -y
-
 # My Apps
 ./z_vscode.sh
 # ./z_googlechrome.sh
