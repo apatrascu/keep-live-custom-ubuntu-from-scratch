@@ -85,6 +85,9 @@ apt-get install -y \
 # My cleanup
 ./z_cleanup.sh
 
+# upgrade everything
+apt-get full-upgrade -y
+
 # Remove unused packages
 apt-get autoremove -y
 
