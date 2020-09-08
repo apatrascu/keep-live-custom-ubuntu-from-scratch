@@ -16,7 +16,7 @@ apt-get install -y \
     grub-efi-amd64-bin \
     mtools
 
-mkdir $LIVECD_HOME_DIR
+mkdir $LIVECD_HOME_DIR || true
 
 # Bootstrap and configure ubuntu
 debootstrap \
