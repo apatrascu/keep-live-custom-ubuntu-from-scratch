@@ -4,6 +4,8 @@
 check_is_root
 
 # Prerequisites
+rm -f /var/lib/dpkg/lock-frontend
+rm -f /var/lib/dpkg/lock
 apt-get update
 apt-get install -y \
     binutils \
